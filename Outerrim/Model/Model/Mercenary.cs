@@ -16,4 +16,6 @@ public partial class Mercenary
     public int CombatSkill { get; set; }
 
     public virtual ICollection<AircraftCrewJt> AircraftCrewJts { get; set; } = new List<AircraftCrewJt>();
+
+    public virtual ICollection<MercenaryReputation> MercenaryReputations { get; set; } = new List<MercenaryReputation>();
 }

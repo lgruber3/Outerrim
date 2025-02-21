@@ -20,4 +20,6 @@ public partial class Aircraft
     public virtual ICollection<AircraftCrewJt> AircraftCrewJts { get; set; } = new List<AircraftCrewJt>();
 
     public virtual ICollection<Compartment> Compartments { get; set; } = new List<Compartment>();
+
+    public virtual AircraftSpezification Spezification { get; set; } = null!;
 }
