@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Outerrim", "Outerrim\Outerr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{8ECED98F-AD5B-4DA0-8794-12FB4E40FC9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{AB130079-A1CB-49B3-97B5-BA93EE11BAFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{8ECED98F-AD5B-4DA0-8794-12FB4E40FC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ECED98F-AD5B-4DA0-8794-12FB4E40FC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ECED98F-AD5B-4DA0-8794-12FB4E40FC9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB130079-A1CB-49B3-97B5-BA93EE11BAFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB130079-A1CB-49B3-97B5-BA93EE11BAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB130079-A1CB-49B3-97B5-BA93EE11BAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB130079-A1CB-49B3-97B5-BA93EE11BAFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

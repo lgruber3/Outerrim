@@ -1,3 +1,5 @@
+using Domain.Interfaces;
+using Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 using Model;
 using Model.Model;
@@ -17,6 +19,7 @@ builder.Services.AddDbContextFactory<OuterrimContext>(
 );
 
 builder.Services.AddRazorPages();
+builder.Services.AddTransient<IRepository<Mercenary>, MercenaryRepository>();
 
 var app = builder.Build();
 
