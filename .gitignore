@@ -1,0 +1,83 @@
+# Rider-specific
+.idea/
+*.sln.iml
+*.csproj.iml
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/shelf/
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/gradle.xml
+.idea/**/libraries/
+.idea/kotlinc.xml
+.idea_modules/
+
+# Build output
+bin/
+obj/
+out/
+*.exe
+*.dll
+*.pdb
+*.log
+*.pidb
+*.mdb
+*.cache
+*.ilk
+*.ilk
+*.idb
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+*.user
+
+# Blazor & .NET-specific
+wwwroot/css/
+wwwroot/js/
+wwwroot/lib/
+wwwroot/dist/
+wwwroot/node_modules/
+node_modules/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Debug & Release
+Debug/
+Release/
+Publish/
+AppPackages/
+*.publishsettings
+*.pubxml
+*.pubxml.user
+
+# Rider backend
+.rider/
+.idea/
+config/
+logs/
+results/
+
+# Entity Framework Migrations (optional, include if you don't want local DB files)
+Migrations/
+*.db
+
+# User-specific settings
+*.userprefs
+*.vs/
+.vsconfig
+
+# Docker-related
+docker-compose.override.yml
+docker-compose.override.debug.yml
+
+# Azure & Hosting
+.azure/
+appsettings.json
+appsettings.*.json
+secrets.json
