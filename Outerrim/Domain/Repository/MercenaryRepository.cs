@@ -5,7 +5,7 @@ namespace Domain.Repository;
 
 public class MercenaryRepository : ARepositoryAsync<Mercenary>
 {
-    public MercenaryRepository(DbContext context) : base(context)
+    public MercenaryRepository(OuterrimContext context) : base(context)
     {
     }
 }
