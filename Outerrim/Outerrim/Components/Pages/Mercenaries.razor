@@ -1,0 +1,52 @@
+﻿@page "/Mercenaries"
+@using System.Diagnostics
+@using Domain.Interfaces
+@using Domain.Repository
+@using Model.Model
+@inject IRepository<Mercenary> MercenariesV
+
+@code
+{
+    private List<Mercenary> mercenaries = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        mercenaries = await MercenariesV.ReadAllAsync();
+    }
+}
+
+<PageTitle>Mercenaries</PageTitle>
+
+<h3 class="col-6">BookOverview</h3>
+<button type="button" class="btn btn-primary col-2 my-1 ">Create New Mercenary</button>
+
+<div class="container-fluid">
+    <div class="row col-lg-12 p-0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Body Skills</th>
+                <th scope="col">Combat Skills</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach(var mercenary in mercenaries)
+            {
+                <tr>
+                    <th scope="row">@mercenary.MercenaryId</th>
+                    <td>@mercenary.FirstName</td>
+                    <td>@mercenary.LastName</td>
+                    <td>@mercenary.BodySkills</td>
+                    <td>@mercenary.CombatSkill</td>
+
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

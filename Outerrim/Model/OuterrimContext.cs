@@ -9,11 +9,12 @@ public partial class OuterrimContext : DbContext
 {
     public OuterrimContext()
     {
+        
     }
 
-    public OuterrimContext(DbContextOptions<OuterrimContext> options)
-        : base(options)
+    public OuterrimContext(DbContextOptions<OuterrimContext> options) : base(options)
     {
+        
     }
 
     public virtual DbSet<Aircraft> Aircrafts { get; set; }
