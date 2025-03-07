@@ -67,4 +67,14 @@ public abstract class ARepositoryAsync<TEntity> : IRepository<TEntity> where TEn
     {
         return await _dbSet.ToListAsync(cancellationToken);
     }
+    
+    public virtual async Task DeleteAsync(int id, CancellationToken cancellationToken = default)
+    {
+        var entity = await ReadAsync(id, cancellationToken);
+        if (entity is not null)
+        {
+            _dbSet.Remove(entity);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
+    }
 }
