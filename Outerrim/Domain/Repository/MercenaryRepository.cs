@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Model;
 using Model.Model;
 
 namespace Domain.Repository;

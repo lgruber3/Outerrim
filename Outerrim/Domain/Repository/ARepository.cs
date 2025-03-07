@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Model;
 using Model.Model;
 
 namespace Domain.Repository;

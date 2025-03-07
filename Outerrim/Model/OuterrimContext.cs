@@ -26,9 +26,7 @@ public partial class OuterrimContext : DbContext
     public virtual DbSet<Compartment> Compartments { get; set; }
 
     public virtual DbSet<CrimeSyndicate> CrimeSyndicates { get; set; }
-
-    public virtual DbSet<EfmigrationsHistory> EfmigrationsHistories { get; set; }
-
+    
     public virtual DbSet<EnerySystem> EnerySystems { get; set; }
 
     public virtual DbSet<EnvironmentalSystem> EnvironmentalSystems { get; set; }
@@ -148,23 +146,11 @@ public partial class OuterrimContext : DbContext
                 .HasMaxLength(120)
                 .HasColumnName("NAME");
         });
-
-        modelBuilder.Entity<EfmigrationsHistory>(entity =>
-        {
-            entity.HasKey(e => e.MigrationId).HasName("PRIMARY");
-
-            entity.ToTable("__EFMigrationsHistory");
-
-            entity.Property(e => e.MigrationId).HasMaxLength(150);
-            entity.Property(e => e.ProductVersion).HasMaxLength(32);
-        });
-
+        
         modelBuilder.Entity<EnerySystem>(entity =>
         {
-            entity.HasKey(e => e.MachineryId).HasName("PRIMARY");
-
-            entity
-                .ToTable("ENERY_SYSTEMS")
+            // No key configuration here, it will inherit from Machinery
+            entity.ToTable("ENERY_SYSTEMS")
                 .HasCharSet("utf8mb3")
                 .UseCollation("utf8mb3_general_ci");
 
@@ -172,7 +158,8 @@ public partial class OuterrimContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("MACHINERY_ID");
 
-            entity.HasOne(d => d.Machinery).WithOne(p => p.EnerySystem)
+            entity.HasOne(d => d.Machinery)
+                .WithOne(p => p.EnerySystem)
                 .HasForeignKey<EnerySystem>(d => d.MachineryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_ENERY_SYSTEMS_MACHINERIES1");
@@ -180,10 +167,8 @@ public partial class OuterrimContext : DbContext
 
         modelBuilder.Entity<EnvironmentalSystem>(entity =>
         {
-            entity.HasKey(e => e.MachineryId).HasName("PRIMARY");
-
-            entity
-                .ToTable("ENVIRONMENTAL_SYSTEMS")
+            // No key configuration here, it will inherit from Machinery
+            entity.ToTable("ENVIRONMENTAL_SYSTEMS")
                 .HasCharSet("utf8mb3")
                 .UseCollation("utf8mb3_general_ci");
 
@@ -191,11 +176,13 @@ public partial class OuterrimContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("MACHINERY_ID");
 
-            entity.HasOne(d => d.Machinery).WithOne(p => p.EnvironmentalSystem)
+            entity.HasOne(d => d.Machinery)
+                .WithOne(p => p.EnvironmentalSystem)
                 .HasForeignKey<EnvironmentalSystem>(d => d.MachineryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_ENVIRONMENTAL_SYSTEMS_MACHINERIES1");
         });
+
 
         modelBuilder.Entity<Machinery>(entity =>
         {
@@ -276,18 +263,13 @@ public partial class OuterrimContext : DbContext
 
         modelBuilder.Entity<Weapon>(entity =>
         {
-            entity.HasKey(e => e.MachineryId).HasName("PRIMARY");
-
-            entity
-                .ToTable("WEAPONS")
+            entity.ToTable("WEAPONS")
                 .HasCharSet("utf8mb3")
                 .UseCollation("utf8mb3_general_ci");
 
-            entity.Property(e => e.MachineryId)
-                .ValueGeneratedNever()
-                .HasColumnName("MACHINERY_ID");
-
-            entity.HasOne(d => d.Machinery).WithOne(p => p.Weapon)
+            // Removed the key configuration for MachineryId here
+            entity.HasOne(d => d.Machinery)
+                .WithOne(p => p.Weapon)
                 .HasForeignKey<Weapon>(d => d.MachineryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_WEAPONS_MACHINERIES1");
