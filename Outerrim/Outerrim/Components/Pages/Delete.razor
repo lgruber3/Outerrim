@@ -17,36 +17,33 @@
     </thead>
     <tbody>
     <tr>
-        <td>@Machinery.MachineryId</td>
-        <td>@Machinery.Label</td>
-        <td>@Machinery.Function</td>
-        <td>@Machinery.CompartmentId</td>
-        <td><a class="text-danger" href="/DeleteMachinery/@Machinery.MachineryId">Delete</a></td>
-        <td><a class="text-warning" href="/UpdateMachinery/@Machinery.MachineryId">Update</a></td>
-        <td><a class="text-primary" href="./CompartmentsView/@Machinery.MachineryId">Watch Compartmenst</a></td>
+        <th>@machinery.MachineryId</th>
+        <th>@machinery.Label</th>
+        <th>@machinery.Function</th>
+        <th>@machinery.CompartmentId</th>
     </tr>
     </tbody>
 </table>
 
-<button class="btn-danger" @onclick="async () => await Delete()">Delete</button>
+<button class="btn-danger" @onclick="async () => await DeletePage()">Delete</button>
 
 
 
 @code{
 
-    Machinery Machinery = new Machinery();
+    Machinery machinery = new Machinery();
 
-    protected async override Task OnInitialized(){
+    protected async override Task OnInitializedAsync(){
 
         await base.OnInitializedAsync();
 
-        Machinery = await MachineryRepository.ReadAsync(Id); 
+        machinery = await MachineryRepository.ReadAsync(Id); 
     }
 
-    private async Task Delete()
+    private async Task DeletePage()
     {
-        await MachineryRepository.DeleteAsync(Machinery); 
-        NavigationManager.NavigateTo("/");
+        await MachineryRepository.DeleteAsync(machinery.MachineryId); 
+        NavigationManager.NavigateTo("/Home");
     }
     
     [Parameter]
