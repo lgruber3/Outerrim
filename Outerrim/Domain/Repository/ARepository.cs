@@ -6,15 +6,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Model;
+using Model.Model;
 
 namespace Domain.Repository;
 
 public abstract class ARepositoryAsync<TEntity> : IRepository<TEntity> where TEntity : class
 {
-    protected readonly DbContext _context;
+    protected readonly OuterrimContext _context;
     protected readonly DbSet<TEntity> _dbSet;
 
-    protected ARepositoryAsync(DbContext context)
+    protected ARepositoryAsync(OuterrimContext context)
     {
         _context = context;
         _dbSet = context.Set<TEntity>();
