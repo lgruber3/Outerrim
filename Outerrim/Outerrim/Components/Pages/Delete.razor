@@ -1,0 +1,58 @@
+@page "/Delete/{id}"
+@using Domain.Interfaces
+@using Model.Model
+@using RenderMode = Microsoft.AspNetCore.Mvc.Rendering.RenderMode
+@inject IRepository<Machinery> MachineryRepository
+@inject NavigationManager NavigationManager
+
+<h3>Delete</h3>
+<table>
+    <thead>
+    <tr class="bg-info">
+        <th>Machinery-Id</th>
+        <th>Label</th>
+        <th>Function</th>
+        <th>Compartment-Id</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>@Machinery.MachineryId</td>
+        <td>@Machinery.Label</td>
+        <td>@Machinery.Function</td>
+        <td>@Machinery.CompartmentId</td>
+        <td><a class="text-danger" href="/DeleteMachinery/@Machinery.MachineryId">Delete</a></td>
+        <td><a class="text-warning" href="/UpdateMachinery/@Machinery.MachineryId">Update</a></td>
+        <td><a class="text-primary" href="./CompartmentsView/@Machinery.MachineryId">Watch Compartmenst</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<button class="btn-danger" @onclick="async () => await Delete()">Delete</button>
+
+
+
+@code{
+
+    Machinery Machinery = new Machinery();
+
+    protected async override Task OnInitialized(){
+
+        await base.OnInitializedAsync();
+
+        Machinery = await MachineryRepository.ReadAsync(Id); 
+    }
+
+    private async Task Delete()
+    {
+        await MachineryRepository.DeleteAsync(Machinery); 
+        NavigationManager.NavigateTo("/");
+    }
+    
+    [Parameter]
+    public int Id { get; set; }
+
+}
+
+    
+

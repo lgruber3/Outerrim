@@ -65,4 +65,5 @@ public abstract class ARepositoryAsync<TEntity> : IRepository<TEntity> where TEn
     {
         return await _dbSet.ToListAsync(cancellationToken);
     }
+    
 }

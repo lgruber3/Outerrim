@@ -8,7 +8,7 @@ namespace Model.Model;
 [Table("AIRCRAFT_SPEZIFICATIONS")]
 public partial class AircraftSpezification
 {
-    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity))]
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("SPEZIFICATION_ID"), Required]
     public int SpezificationId { get; set; }
 

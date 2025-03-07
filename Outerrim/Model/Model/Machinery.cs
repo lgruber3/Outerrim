@@ -17,6 +17,7 @@ public partial class Machinery
     public string Label { get; set; } = null!;
 
     [Column("FUNKTION"), Required]
+    [StringLength(45)]
     public string Function { get; set; } = null!;
 
     [Column("COMPARTMENT_ID", TypeName = "int")]

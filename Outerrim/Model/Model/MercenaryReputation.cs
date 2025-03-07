@@ -16,6 +16,7 @@ public partial class MercenaryReputation
     public int MercenaryId { get; set; }
 
     [Column("REPUTATION_CHANGE"), Required]
+    [StringLength(50)]
     public string ReputationChange { get; set; } = null!;
 
     public virtual Mercenary Mercenary { get; set; } = null!;
